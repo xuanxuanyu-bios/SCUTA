@@ -1,9 +1,7 @@
 exportPattern("^[[:alpha:]]+")
 
 export(modDream)
-
 import(foreach)
-import(limma)
 import(lme4)
 import(iterators)
 import(pbkrtest) 

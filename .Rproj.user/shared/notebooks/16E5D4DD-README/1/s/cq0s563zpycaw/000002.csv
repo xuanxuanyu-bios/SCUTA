@@ -1,0 +1,8 @@
+"0","library(""zinbwave"")"
+"0","library(""DESeq2"")"
+"0","library(""edgeR"")"
+"0","library(""variancePartition"")"
+"0","# below two lines are to be changed after complete the formulation of package"
+"0","setwd(""C:/Users/xuanxuan/Dropbox/2021_Researches/sectional-temporal-celltype/Rcode/modDream/data"")"
+"0",""
+"2","The working directory was changed to C:/Users/xuanxuan/Dropbox/2021_Researches/sectional-temporal-celltype/Rcode/modDream/data inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."

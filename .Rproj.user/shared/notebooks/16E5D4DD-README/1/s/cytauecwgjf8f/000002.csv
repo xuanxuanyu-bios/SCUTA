@@ -1,0 +1,25 @@
+"0","zinb <- zinbFit(fluidigm, K=2, epsilon=1000)
+fluidigm_zinb <- zinbwave(fluidigm, fitted_model = zinb, K = 2, epsilon=1000, observationalWeights = TRUE)
+weights <- assay(fluidigm_zinb, ""weights"")
+
+### Dream ###
+d0 <- DGEList(counts)
+d0 <- calcNormFactors(d0)
+
+
+form <- ~0+ condition + time + (1 + time |individual)
+vobjDream = voomWithDreamWeights( d0, form, coldata )
+vobjDream.weight<-vobjDream
+vobjDream.weight$weights <- weights*vobjDream.weight$weights
+
+
+L = getContrast( vobjDream, form, coldata, c(""condition1"", ""condition2""))
+fitmm.weight = modDream( vobjDream.weight, form, coldata, L)
+
+dream.weight <- topTable(fitmm.weight, coef=""L1"", number=nrow(counts) )
+dream.weight <- dream.weight[rownames(counts),]
+
+"
+"2","'modDream' is not recognized as an internal or external command,
+operable program or batch file.
+"

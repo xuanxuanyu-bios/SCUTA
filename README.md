@@ -11,14 +11,17 @@ install_github("xuanxuanyu-bios/modDream")
 ```
 load library and data
 library("modDream")
-
-# counts is expression matrix whhere columns represent cells, rows represent genes.
-# coldata is the meta data including condition, individual and time information of each cell. 
+```
+counts is expression matrix whhere columns represent cells, rows represent genes.
+coldata is the meta data including condition, individual and time information of each cell. 
+```
 data(example.data)
-
-#load libraries
+```
+load libraries
+```
 library("zinbwave")
 library("DESeq2")
 library("edgeR")
 library("variancePartition")
 ```
+

@@ -7,3 +7,8 @@ import(iterators)
 import(pbkrtest) 
 import(variancePartition)
 import(dplyr)
+
+importFrom(limma,asMatrixWeights)
+importFrom(limma,eBayes)
+importFrom(limma,topTable)
+importFrom(limma,is.fullrank)

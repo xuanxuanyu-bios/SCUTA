@@ -47,9 +47,8 @@ vobjDream.weight$weights <- weights*vobjDream.weight$weights
 ```
 `getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing modDream function.
 ```
-L = getContrast( vobjDream, form, coldata, c("condition1", "condition2"))
-fit.modDream     <- modDream( vobjDream.weight, form, coldata, L)
-fit.modDream.res <- topTable(fit.modDream, coef="L1", number=nrow(counts) )
+fit.modDream     <- modDream( vobjDream.weight, form, coldata)
+fit.modDream.res <- topTable(fit.modDream, coef="condition2", number=nrow(counts) )
 head(fit.modDream.res)
 ```
 The `modDream()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'modDream()' function.

@@ -31,4 +31,26 @@ fluidigm <- DESeqDataSetFromMatrix(countData = counts,
                                    design = ~ condition + time)
 ```
 The zinbwave function is used to compute observational weights which unlock bulk RNA-seq tools for single-cell applications, as illustrated in [Van den Berge et al. 2018](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1406-4).
+```
+zinb <- zinbFit(fluidigm, K=2, epsilon=1000)
+fluidigm_zinb <- zinbwave(fluidigm, fitted_model = zinb, K = 2, epsilon=1000, observationalWeights = TRUE)
+weights <- assay(fluidigm_zinb, "weights")
+```
+`voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute observation-level weights. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data.
+```
+d0 <- DGEList(counts)
+d0 <- calcNormFactors(d0)
+form <- ~ condition + time + (1 + time |individual)
+vobjDream = voomWithDreamWeights( d0, form, coldata )
+vobjDream.weight<-vobjDream
+vobjDream.weight$weights <- weights*vobjDream.weight$weights
+```
+`getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing modDream function.
+```
+L = getContrast( vobjDream, form, coldata, c("condition1", "condition2"))
+fit.modDream     <- modDream( vobjDream.weight, form, coldata, L)
+fit.modDream.res <- topTable(fit.modDream, coef="L1", number=nrow(counts) )
+head(fit.modDream.res)
+```
+The `modDream()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'modDream()' function.
 

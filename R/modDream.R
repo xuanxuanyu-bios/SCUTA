@@ -2,7 +2,11 @@
 # modified dream function, solve the problem of
 # when there is random intercept, # of varComp rows is not equal to # of coefficients rows
 # rownames(varComp) = rownames(coefficients)
-
+#' @importFrom lmerControl  lme4
+#' @importFrom nextElem     iterators
+#' @importFrom pbkrtest     get_SigmaG
+#' @import     foreach
+#' @importFrom variancePartition     colinearityScore
 modDream<-function (exprObj, formula, data, L, ddf = c("Satterthwaite",
                                              "Kenward-Roger"), useWeights = TRUE, weightsMatrix = NULL,
           control = lme4::lmerControl(calc.derivs = FALSE, check.rankX = "stop.deficient"),
@@ -273,7 +277,7 @@ modDream<-function (exprObj, formula, data, L, ddf = c("Satterthwaite",
 
 
 
-# below are functions required in dream function
+# below are functions required in modDream function
 exprIter = function( exprObj, weights, useWeights = TRUE, scale=TRUE, iterCount = "icount"){
 
   n_features = nrow(exprObj)
@@ -312,7 +316,9 @@ exprIter = function( exprObj, weights, useWeights = TRUE, scale=TRUE, iterCount 
   it
 }
 
-library("dplyr")
+#' @import foreach
+#' @importFrom lme4 fixef 
+#' @importFrom stats sigma
 .eval_lmm = function( fit, L, ddf ){
 
   j = 1

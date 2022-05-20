@@ -8,7 +8,8 @@ install_github("xuanxuanyu-bios/scMLLM")
 ```
 ### Analysis flowchart
 ```
-<img src="https://github.com/xuanxuanyu-bios/scMLLM/blob/main/Image/pipeline%20flowchart.png" width="90%"></img>
+<img src="https://github.com/xuanxuanyu-bios/scMLLM/blob/main/Image/pipeline%20flowchart.png" width="90%">
+![This is an image](https://github.com/xuanxuanyu-bios/scMLLM/blob/main/Image/pipeline%20flowchart.png)
 ```
 
 ### Model fitting tutorial

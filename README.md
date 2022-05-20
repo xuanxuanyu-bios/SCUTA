@@ -9,7 +9,7 @@ install_github("xuanxuanyu-bios/scMLLM")
 ### Analysis flowchart
 ```
 
-![This is an image](/../main/Image/pipelineflowchart.png)
+![This is an image](https://github.com/xuanxuanyu-bios/scMLLM/blob/main/Image/pipelineflowchart.png?raw=true)
 
 ```
 

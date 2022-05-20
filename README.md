@@ -10,6 +10,7 @@ install_github("xuanxuanyu-bios/scMLLM")
 ```
 <img src="https://raw.githubusercontent.com/xuanxuanyu-bios/scMLLM/main/Image/pipeline%20flowchart.png" width="90%">
 ![This is an image](Image/pipeline%20flowchart.png)
+![GitHub Light]("https://raw.githubusercontent.com/xuanxuanyu-bios/scMLLM/main/Image/pipeline%20flowchart.png)
 ```
 
 ### Model fitting tutorial

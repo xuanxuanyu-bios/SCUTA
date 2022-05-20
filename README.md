@@ -6,6 +6,11 @@
 library(devtools)
 install_github("xuanxuanyu-bios/scMLLM")
 ```
+### Analysis flowchart
+```
+<img src="https://github.com/xuanxuanyu-bios/scMLLM/blob/main/Image/pipeline%20flowchart.png" width="90%"></img>
+```
+
 ### Model fitting tutorial
 `modDream` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
 ```

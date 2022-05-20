@@ -7,11 +7,9 @@ library(devtools)
 install_github("xuanxuanyu-bios/scMLLM")
 ```
 ### Analysis flowchart
-```
 
 ![pipelineflowchart](https://user-images.githubusercontent.com/66747045/169596929-e20da322-8ac5-4cdc-8e12-12fc04be6f8e.png)
 
-```
 
 ### Model fitting tutorial
 `scMLLM` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.

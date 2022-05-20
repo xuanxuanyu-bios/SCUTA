@@ -51,11 +51,11 @@ vobjDream = voomWithDreamWeights( d0, form, coldata )
 vobjDream.weight<-vobjDream
 vobjDream.weight$weights <- weights*vobjDream.weight$weights
 ```
-`getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing modDream function.
+`getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing scMLLM function.
 ```
 fit.scMLLM     <- scMLLM( vobjDream.weight, form, coldata)
 fit.scMLLM.res <- topTable(fit.scMLLM, coef="condition2", number=nrow(counts) )
 head(fit.scMLLM.res)
 ```
-The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'modDream()' function.
+The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'scMLLM()' function.
 

@@ -1,16 +1,16 @@
-# modDream
+# scMLLM
  linear mixed modelling for single cell RNAseq data with multilevel longitudinal design
  
-### install modDream
+### install scMLLM
 ```
 library(devtools)
-install_github("xuanxuanyu-bios/modDream")
+install_github("xuanxuanyu-bios/scMLLM")
 ```
 ### Model fitting tutorial
 `modDream` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
 ```
 Load library and data
-library("modDream")
+library("scMLLM")
 ```
 counts is expression matrix whhere columns represent cells, rows represent genes.
 coldata is the meta data including condition, individual and time information of each cell. 
@@ -47,9 +47,9 @@ vobjDream.weight$weights <- weights*vobjDream.weight$weights
 ```
 `getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing modDream function.
 ```
-fit.modDream     <- modDream( vobjDream.weight, form, coldata)
-fit.modDream.res <- topTable(fit.modDream, coef="condition2", number=nrow(counts) )
-head(fit.modDream.res)
+fit.scMLLM     <- scMLLM( vobjDream.weight, form, coldata)
+fit.scMLLM.res <- topTable(fit.scMLLM, coef="condition2", number=nrow(counts) )
+head(fit.scMLLM.res)
 ```
-The `modDream()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'modDream()' function.
+The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'modDream()' function.
 

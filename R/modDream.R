@@ -7,7 +7,7 @@
 #' @importFrom pbkrtest     get_SigmaG
 #' @import     foreach
 #' @importFrom variancePartition     colinearityScore
-modDream<-function (exprObj, formula, data, L, ddf = c("Satterthwaite",
+scMLLM<-function (exprObj, formula, data, L, ddf = c("Satterthwaite",
                                              "Kenward-Roger"), useWeights = TRUE, weightsMatrix = NULL,
           control = lme4::lmerControl(calc.derivs = FALSE, check.rankX = "stop.deficient"),
           suppressWarnings = FALSE, quiet = FALSE, BPPARAM = bpparam(),

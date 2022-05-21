@@ -17,6 +17,7 @@ install_github("xuanxuanyu-bios/scMLLM")
 Load library and data
 library("scMLLM")
 ```
+The imput matrix is the count matrix and meta data. 
 counts is expression matrix whhere columns represent cells, rows represent genes.
 coldata is the meta data including condition, individual and time information of each cell. 
 ```

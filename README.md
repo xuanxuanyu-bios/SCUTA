@@ -57,8 +57,19 @@ vobjDream.weight$weights <- weights*vobjDream.weight$weights
 `getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing scMLLM function.
 ```
 fit.scMLLM     <- scMLLM( vobjDream.weight, form, coldata)
+```
+
+The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'scMLLM()' function. For example, the top 6 differentiall expressed genes between two conditions are 
+
+```
 fit.scMLLM.res <- topTable(fit.scMLLM, coef="condition2", number=nrow(counts) )
 head(fit.scMLLM.res)
-```
-The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'scMLLM()' function.
 
+            logFC  AveExpr         t      P.Value    adj.P.Val     z.std
+Gene558 -1.451388 4.991292 -9.796536 1.481199e-09 1.478237e-06 -6.046398
+Gene569 -1.479936 4.852454 -8.988242 6.702487e-08 3.195357e-05 -5.398969
+Gene740 -1.337853 5.140980 -8.551072 9.605281e-08 3.195357e-05 -5.334037
+Gene379 -1.452054 5.376776 -7.665623 4.786163e-07 9.380289e-05 -5.034693
+Gene98  -1.358545 5.261751 -7.681800 5.068412e-07 9.380289e-05 -5.023705
+Gene213 -1.286129 5.877459 -7.457352 5.639453e-07 9.380289e-05 -5.003172
+```

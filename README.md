@@ -32,6 +32,9 @@ library("variancePartition")
 ```
 prepare DESeqDataSet file and specify the variables that are taken into acount handling dropout events. 
 ```
+counts  <- example.data$counts
+coldata <- example.data$coldata
+
 fluidigm <- DESeqDataSetFromMatrix(countData = counts,
                                    colData = coldata,
                                    design = ~ condition + time)

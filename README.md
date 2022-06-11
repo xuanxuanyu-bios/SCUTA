@@ -73,3 +73,4 @@ Gene379 -1.452054 5.376776 -7.665623 4.786163e-07 9.380289e-05 -5.034693
 Gene98  -1.358545 5.261751 -7.681800 5.068412e-07 9.380289e-05 -5.023705
 Gene213 -1.286129 5.877459 -7.457352 5.639453e-07 9.380289e-05 -5.003172
 ```
+Where logFC is the log fold change comparing condition 2 with condition 1, P.Value and adj.P.Val are the unadjusted and FDR adjusted P values, respectively.

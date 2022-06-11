@@ -1,6 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 
-export(modDream)
+export(scMLLM)
 import(foreach)
 import(lme4)
 import(iterators)

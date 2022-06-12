@@ -4,7 +4,7 @@
 #' param fit.res, model fitting resutls by using SCUTA
 #' param ind.var, independent variable which will be used as the x axis in the plot
 #' param genenames, a vector contain the gene names, the log2 count of which will be plot
-SCUTA.plot<-function(counts,
+SCUTA.plot.num<-function(counts,
                      coldata,
                      fit.res,
                      ind.var,
@@ -77,7 +77,7 @@ SCUTA.plot<-function(counts,
   
 }
 
-# SCUTA.plot(counts=counts,
+# SCUTA.plot.num(counts=counts,
 #            coldata=coldata,
 #            fit.res=fit.res,
 #            ind.var="time",

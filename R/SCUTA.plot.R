@@ -70,8 +70,8 @@ SCUTA.plot<-function(counts,
   
 }
 
-SCUTA.plot(counts=counts,
-           coldata=coldata,
-           fit.res=fit.res,
-           ind.var="time",
-           genenames=c("Gene1","Gene2"))
+# SCUTA.plot(counts=counts,
+#            coldata=coldata,
+#            fit.res=fit.res,
+#            ind.var="time",
+#            genenames=c("Gene1","Gene2"))

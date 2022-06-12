@@ -1,10 +1,10 @@
-# scMLLM
- linear mixed modelling for single cell RNAseq data with multilevel longitudinal design
+# SCUTA
+ linear mixed modelling for single cell RNAseq time series data with multilevel design
  
-### install scMLLM
+### install SCUTA
 ```
 library(devtools)
-install_github("xuanxuanyu-bios/scMLLM")
+install_github("xuanxuanyu-bios/SCUTA")
 ```
 ### Analysis flowchart
 
@@ -12,10 +12,10 @@ install_github("xuanxuanyu-bios/scMLLM")
 
 
 ### Model fitting tutorial
-`scMLLM` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
+`SCUTA` is a tools that designed for fitting linear mixed models for single cell RNAseq datasets, especially with longitudinal multi-level design. The algorithm is based on `Dream` in `VariancePartition` package.
 ```
 Load library and data
-library("scMLLM")
+library("SCUTA")
 ```
 The imput matrix is the count matrix and meta data. 
 counts is expression matrix whhere columns represent cells, rows represent genes.
@@ -54,16 +54,16 @@ vobjDream = voomWithDreamWeights( d0, form, coldata )
 vobjDream.weight<-vobjDream
 vobjDream.weight$weights <- weights*vobjDream.weight$weights
 ```
-`getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing scMLLM function.
+`getContrast` is used to specify the contrast matrix for linear mixed model. The three-level linear mixed model is  fitted by suing SCUTA function.
 ```
-fit.scMLLM     <- scMLLM( vobjDream.weight, form, coldata)
+fit.SCUTA     <- SCUTA( vobjDream.weight, form, coldata)
 ```
 
-The `scMLLM()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'scMLLM()' function. For example, the top 6 differentiall expressed genes between two conditions are 
+The `SCUTA()` function is modified to replace the 'dream()' function in variancePartition, so that any  function in variance partition that used combined with `dream()` function can be used in conjuction with 'SCUTA()' function. For example, the top 6 differentiall expressed genes between two conditions are 
 
 ```
-fit.scMLLM.res <- topTable(fit.scMLLM, coef="condition2", number=nrow(counts) )
-head(fit.scMLLM.res)
+fit.SCUTA.res <- topTable(fit.SCUTA, coef="condition2", number=nrow(counts) )
+head(fit.SCUTA.res)
 
             logFC  AveExpr         t      P.Value    adj.P.Val     z.std
 Gene558 -1.451388 4.991292 -9.796536 1.481199e-09 1.478237e-06 -6.046398

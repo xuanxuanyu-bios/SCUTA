@@ -64,7 +64,14 @@ SCUTA.plot<-function(counts,
       subset.coef<-coefs[genenames[i],]
       abline(coef = subset.coef,lwd=2,col=col.list[i])
     }
-    legend("topright",legend=genenames,col = col.list, lty = 1,lwd=2)
+    
+     if (length(genenames)>10){
+      warning("the number of genes is greater than 10, legend will only show the first 10 genes")
+      legend("topright",legend=genenames[1:10],col = col.list[1:10], lty = 1,lwd=2)
+    }else {
+      legend("topright",legend=genenames,col = col.list, lty = 1,lwd=2)
+    }
+    
   }
   
   

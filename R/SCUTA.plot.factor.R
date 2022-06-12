@@ -81,10 +81,10 @@ SCUTA.plot.facotr<-function(counts,
   
 }
 
-SCUTA.plot.facotr(counts=counts,
-                  coldata=coldata,
-                  fit.res=fit.res,
-                  fit.res.coef="condition2",
-                  ind.var="condition",
-                  genenames=c("Gene1","Gene2"))
+#SCUTA.plot.facotr(counts=counts,
+#                  coldata=coldata,
+#                 fit.res=fit.res,
+#                  fit.res.coef="condition2",
+#                  ind.var="condition",
+#                  genenames=c("Gene1","Gene2"))
 

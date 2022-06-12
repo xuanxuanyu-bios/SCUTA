@@ -41,7 +41,7 @@ SCUTA.plot<-function(counts,
     
     y.max<-max(y)
     col.list<-seq(1,length(genenames))
-    plot(inte.data[,ind.var],inte.data[,genenames[1]],col=col.list,ylim=c(0,y.max),ylab="log2 Count")
+    plot(inte.data[,ind.var],inte.data[,genenames[1]],col=col.list,ylim=c(0,y.max),ylab="log2 Count",xlab=ind.var)
     subset.coef<-coefs[genenames[1],]
     abline(coef = subset.coef,lwd=2,col=col.list)
     legend("topright",legend=genenames,col = col.list, lty = 1,lwd=2)
@@ -55,7 +55,7 @@ SCUTA.plot<-function(counts,
 
     col.list<-seq(1,length(genenames))
     y.max<-max(y)
-    plot(inte.data[,ind.var],inte.data[,genenames[1]],col=col.list[1],ylim=c(0,y.max),ylab="log2 Count")
+    plot(inte.data[,ind.var],inte.data[,genenames[1]],col=col.list[1],ylim=c(0,y.max),ylab="log2 Count",xlab=ind.var)
     subset.coef<-coefs[genenames[1],]
     abline(coef = subset.coef,lwd=2,col=col.list[1])
     # par(new=TRUE)

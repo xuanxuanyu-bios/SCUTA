@@ -1,4 +1,4 @@
-#' plot function, which can be used to show the trajectory of outcome given an independent variable holding other variable constant for a gene
+#' plot function, which can be used to show the trajectory of outcome given an independent variable holding other variable as 0s for a gene
 #' param counts, count matrix, in which the rows represent genes, while columns represent cells
 #' param coldata, clinical information of each cell, e.g., group, individual, time, etc.
 #' param fit.res, model fitting resutls by using SCUTA

@@ -1,7 +1,5 @@
 
-# modified dream function, solve the problem of
-# when there is random intercept, # of varComp rows is not equal to # of coefficients rows
-# rownames(varComp) = rownames(coefficients)
+#' fit linear mixed model for Single Cell RNA-seq Time Series data with multilevel structure
 #' @importFrom lmerControl  lme4
 #' @importFrom nextElem     iterators
 #' @importFrom pbkrtest     get_SigmaG

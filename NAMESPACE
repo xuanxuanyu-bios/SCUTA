@@ -1,6 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 
-export(scMLLM)
+export(SCUTA)
 import(foreach)
 import(lme4)
 import(iterators)

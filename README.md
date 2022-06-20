@@ -45,7 +45,11 @@ zinb <- zinbFit(fluidigm, K=2, epsilon=1000)
 fluidigm_zinb <- zinbwave(fluidigm, fitted_model = zinb, K = 2, epsilon=1000, observationalWeights = TRUE)
 weights <- assay(fluidigm_zinb, "weights")
 ```
-`voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute observation-level weights. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data.
+`voomWithDreamWeights` function is used to transform count data to log2-counts per million (logCPM), estimate the mean-variance relationship and compute observation-level weights. Then, the zinb weights and mean-variance weights are combined together as the overall weights. At last, a three-level linear mixed model is fitted for the data. The model can be expressed as 
+$$ E(log_2(Y_ig)) = \beta_{0g} + \beta_{1g} * condition_{i} + \beta_{2g} * time_{i} + \alpha_{0ig} + \alpha_{1ig} * time_{i} $$
+Where $i$ denotes cell, $g$ represents gene,
+$\alpha_{0ig}$ is the random sample effect,
+and $\alpha_{1ig}$ is the random time effect.
 ```
 d0 <- DGEList(counts)
 d0 <- calcNormFactors(d0)
@@ -74,3 +78,19 @@ Gene98  -1.358545 5.261751 -7.681800 5.068412e-07 9.380289e-05 -5.023705
 Gene213 -1.286129 5.877459 -7.457352 5.639453e-07 9.380289e-05 -5.003172
 ```
 Where logFC is the log fold change comparing condition 2 with condition 1, P.Value and adj.P.Val are the unadjusted and FDR adjusted P values, respectively.
+
+### Example of linear mixed models
+For the real data application in the manuscript, we fit 3 linear mixed models with respect to different aims. The scRNA-seq study consists of 1529 cells from 88 human  embryos across 5 days (Day 3 - Day 7). Three lineages were identified after Day 5, including trophectoderm (TE), primitive endoderm (PE), and epiblast (EPI). Cells from each embryo in each time point were sequenced. Model 1 was fitted for cells in each lineage, separately, by also including cells in Day 3 and Day 4 in the model. The aim was to identify genes which show temporal trend in each lineage when considering correlations among cells within the same embryo.
+
+$$Model 1: E(log_2(Y_ig)) = \beta_{0g} + \beta_{1g} * time_{i} + \alpha_{ig}  $$
+
+Where g represents gene while i denotes embryo. Model 2 was fitted for cells in each time point from Day 5 to Day 7, respectively, to detect genes that show differential expression between lineages.
+
+$$Model 2: E(log_2(Y_ig)) = \beta_{0g} + \beta_{2g} * lineage_{i} + \alpha_{ig}  $$
+
+Model 3 was fitted for cells from Day 5 to Day 7 with fixed effect of time and lineage, random effect of lineage and embryo according to the hierarchy structure. 
+
+$$Model 3: E(log_2(Y_ig)) = \beta_{0g} + \beta_{1g} * time_{i} + \beta_{2g} * lineage_{i} + \alpha_{1ig} + \alpha_{2ig}  $$
+
+Where $\alpha_{1ig}$ represents the random effect for embryo, 
+and $\alpha_{2ig}$ capture the within lineage variation with k denoting the lineage.
